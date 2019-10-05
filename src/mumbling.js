@@ -6,7 +6,7 @@ exports.mumbling = function (word) {
     if (index > 0) {
       mumbling = mumbling + '-';
     }
-    mumbling = mumbling + letter.toUpperCase() + letter.repeat(index);
+    mumbling = mumbling + letter.toUpperCase() + letter.toLowerCase().repeat(index);
   }
   return mumbling;
 };
