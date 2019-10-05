@@ -1,0 +1,99 @@
+{
+  "name": "Mumbling",
+  "version": "0.0.1",
+  "description": "Mumbling Kata.",
+  "main": "src/mumbling.js",
+  "license": "MIT",
+  "author": {
+    "name": "UndeadGrishnackh",
+    "email": "undeadgrishnackh@gmail.com",
+    "url": "https://github.com/"
+  },
+  "engines": {
+    "node": "7"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "start": "node src/mumbling.js",
+    "test": "npm run test-jest",
+    "test-cucumber": "./node_modules/.bin/cucumber-js",
+    "test-jest": "jest",
+    "test-API": "newman run API/test/CodeWars.Mumbling.postman_collection.json",
+    "test-local": "npm run docker_stop || npm test && npm run docker_build && npm run docker_run && npm run test-API && npm run test-cucumber",
+    "test:debug": "jest --watchAll",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint .",
+    "flow": "flow check",
+    "docs": "documentation readme src --section=API",
+    "postdocs": "git add README.md",
+    "clean": "rimraf dist",
+    "flowbuild": "flow-copy-source src dist",
+    "prebuild": "npm run docs && npm run clean && npm run flowbuild",
+    "build": "babel src -d dist",
+    "preversion": "npm run lint && npm test && npm run build",
+    "version": "standard-changelog && git add CHANGELOG.md",
+    "postpublish": "git push origin master --follow-tags",
+    "codecov": "node_modules/codecov/bin/codecov",
+    "docker_build": "docker build -t undeadgrishnackh/math_portal .",
+    "docker_run": "docker run -p 8888:8888 -d undeadgrishnackh/math_portal",
+    "docker_stop": "docker stop `docker ps | grep -i undeadgrishnackh/math_portal | awk '{print $1}'`"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "boilerplate-nodejs"
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^23.6.0",
+    "chai": "^4.2.0",
+    "codecov": "^3.5.0",
+    "cucumber": "^5.1.0",
+    "diff": ">=3.5.0",
+    "documentation": "^9.3.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.10.3",
+    "eslint-plugin-flowtype-errors": "^3.5.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "flow-bin": "^0.83.0",
+    "flow-copy-source": "^2.0.6",
+    "husky": "^1.1.2",
+    "istanbul": "^0.4.5",
+    "jest-cli": "^23.6.0",
+    "lint-staged": "^7.3.0",
+    "mocha": "^6.1.4",
+    "nock": "^10.0.6",
+    "opn-cli": "^3.1.0",
+    "prettier": "^1.18.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "rimraf": "^2.6.2",
+    "standard-changelog": "^2.0.11"
+  }
+}
