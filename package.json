@@ -1,5 +1,5 @@
 {
-  "name": "Mumbling",
+  "name": "mumbling",
   "version": "0.0.1",
   "description": "Mumbling Kata.",
   "main": "src/mumbling.js",
@@ -25,6 +25,7 @@
     "test-local": "npm run docker_stop || npm test && npm run docker_build && npm run docker_run && npm run test-API && npm run test-cucumber",
     "test:debug": "jest --watchAll",
     "coverage": "npm test -- --coverage",
+    "coverageForce": "./node_modules/jest/bin/jest.js --verbose --coverage && open ./coverage/lcov-report/index.html",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint .",
     "flow": "flow check",
