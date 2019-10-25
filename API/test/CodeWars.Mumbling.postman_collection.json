@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "305234a2-6388-4266-93f3-210419f51867",
+		"name": "CodeWars.Mumbling",
+		"description": "CodeWars.Mumbling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mumble_abcd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae3a5f9f-8111-459e-9f1c-97084a63c6e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check the JSON result contains: 'A-Bb-Ccc-Dddd\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.mumble).to.eql('A-Bb-Ccc-Dddd');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"word\": \"abcd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/api/CodeWars/mumbling/1.0.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"CodeWars",
+						"mumbling",
+						"1.0.0"
+					]
+				},
+				"description": "Ask the virtual cat to mumble..."
+			},
+			"response": []
+		},
+		{
+			"name": "mumble_mike",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae3a5f9f-8111-459e-9f1c-97084a63c6e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check the JSON result contains: ''M-Ii-Kkk-Eeee\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.mumble).to.eql('M-Ii-Kkk-Eeee');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"word\": \"mike\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/api/CodeWars/mumbling/1.0.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"CodeWars",
+						"mumbling",
+						"1.0.0"
+					]
+				},
+				"description": "Ask the virtual cat to mumble..."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
