@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Mumbling
+  description: API to provide the virtual cat mumbling
+  contact:
+    email: undeadgrishnackh@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/undeadgrishnackh74/CodeWars/mumbling/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /mumbling:
+    post:
+      tags:
+      - admins
+      summary: Let's the cat mumble
+      description: Return the cat's mumbling
+      operationId: mumbling
+      requestBody:
+        description: Word to mumble
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Word'
+      responses:
+        200:
+          description: Cat's mumble
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mumble'
+        400:
+          description: invalid input, object invalid
+components:
+  schemas:
+    Word:
+      required:
+      - word
+      type: object
+      properties:
+        word:
+          type: string
+          example: abcd
+    Mumble:
+      type: object
+      properties:
+        mumble:
+          type: string
+          example: A-Bb-Ccc-Dddd

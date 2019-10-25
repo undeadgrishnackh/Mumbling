@@ -5,10 +5,10 @@ WORKDIR /home/node/app
 COPY ./package*.json ./
 USER node
 RUN npm install
-COPY --chown=node:node ./ .
-EXPOSE 8888
-CMD [ "node", "src/mumbling.js", "--word=abcd" ] .
 
-#docker build -t undeadgrishnackh/codewars_mumbling .
-#docker run -it --rm undeadgrishnackh/codewars_mumbling
-#docker login && docker push undeadgrishnackh/codewars_mumbling
+# Bundle app source
+COPY . .
+
+EXPOSE 8888
+
+CMD [ "npm", "start" ]

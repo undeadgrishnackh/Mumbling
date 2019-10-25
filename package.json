@@ -2,7 +2,7 @@
   "name": "mumbling",
   "version": "0.0.1",
   "description": "Mumbling Kata.",
-  "main": "src/mumbling.js",
+  "main": "src/mumblingAPI.js",
   "license": "MIT",
   "author": {
     "name": "UndeadGrishnackh",
@@ -17,7 +17,7 @@
     "src"
   ],
   "scripts": {
-    "start": "node src/mumbling.js",
+    "start": "node src/mumblingAPI.js",
     "test": "npm run test-jest",
     "test-cucumber": "./node_modules/.bin/cucumber-js",
     "test-jest": "jest",
@@ -40,9 +40,9 @@
     "version": "standard-changelog && git add CHANGELOG.md",
     "postpublish": "git push origin master --follow-tags",
     "codecov": "node_modules/codecov/bin/codecov",
-    "docker_build": "docker build -t undeadgrishnackh/math_portal .",
-    "docker_run": "docker run -p 8888:8888 -d undeadgrishnackh/math_portal",
-    "docker_stop": "docker stop `docker ps | grep -i undeadgrishnackh/math_portal | awk '{print $1}'`"
+    "docker_build": "docker build -t undeadgrishnackh/codewars_mumbling .",
+    "docker_run": "docker run -p 8888:8888 -d undeadgrishnackh/codewars_mumbling",
+    "docker_stop": "docker stop `docker ps | grep -i undeadgrishnackh/codewars_mumbling | awk '{print $1}'`"
   },
   "husky": {
     "hooks": {
