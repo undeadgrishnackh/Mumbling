@@ -1,0 +1,22 @@
+pipeline {				
+    agent any				
+    stages {
+        stage ("build") {		
+            steps {
+                build 'CodeWars_Mumbling_build'	
+            }
+        }
+        
+        stage ("dockerize and release") {		
+            steps {
+                build 'CodeWars_Mumbling_Dockerize'	
+            }
+        }
+        
+        stage ("deploy and integration test") {		
+            steps {
+                build 'CodeWars_Mumbling_Deploy_and_IntegrationTest'	
+            }
+        }
+    }
+}

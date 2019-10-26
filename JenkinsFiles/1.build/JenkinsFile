@@ -1,0 +1,28 @@
+pipeline {
+
+  agent {
+    docker { image 'node:7-alpine' }
+  }
+
+  stages {
+
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/undeadgrishnackh/Mumbling.git/'
+      }
+    }
+
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
+    stage('Unit Test and Coverage') {
+      steps {
+        sh 'npm run coverageForce'
+      }
+    }
+
+  }
+}

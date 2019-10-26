@@ -1,0 +1,22 @@
+pwd 
+docker --version
+
+#NOTE: docker is working in loopback via the HOST socket, so the directory
+#      that the docker client see is the HOST directory!
+HOST_PWD='/home/jenkins/jenkins_home/workspace/TestDockerSocket'
+
+#check if an old container is still running and delete it and the container link name
+OLD_CONTAINER_ID=`docker ps |grep codewars_mumbling | awk '{print $1}'`
+if [ ${OLD_CONTAINER_ID} != '' ]; then docker stop ${OLD_CONTAINER_ID} && docker rm codewars_mumbling; fi
+
+#Run the mumbling container and the newman linking it to the mumbling 
+docker pull undeadgrishnackh/codewars_mumbling
+docker run -p 8888:8888 -d --name codewars_mumbling undeadgrishnackh/codewars_mumbling
+CONTAINER_ID=`docker ps |grep codewars_mumbling | awk '{print $1}'`
+
+#Newman container read the collection from the repo
+#and update the variable for the CI docker sidecar composition
+docker run -v ${HOST_PWD}/API/test:/etc/newman --link=codewars_mumbling -t postman/newman run CodeWars.Mumbling.postman_collection.json -d /etc/newman/newman_CI_environment.json
+
+docker stop ${CONTAINER_ID}
+docker rm codewars_mumbling
