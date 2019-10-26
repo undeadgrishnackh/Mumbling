@@ -41,10 +41,10 @@
 					"raw": "{\n    \"word\": \"abcd\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8888/api/CodeWars/mumbling/1.0.0",
+					"raw": "http://{{url}}:8888/api/CodeWars/mumbling/1.0.0",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"port": "8888",
 					"path": [
@@ -93,10 +93,10 @@
 					"raw": "{\n    \"word\": \"mike\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8888/api/CodeWars/mumbling/1.0.0",
+					"raw": "http://{{url}}:8888/api/CodeWars/mumbling/1.0.0",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"port": "8888",
 					"path": [
@@ -109,6 +109,36 @@
 				"description": "Ask the virtual cat to mumble..."
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "655e3ef9-0010-45af-8d99-3ab676d07542",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "607ce713-fb8d-451c-9edc-0c0b5768d2b7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "28628734-eb37-4c97-a330-434a875708d7",
+			"key": "url",
+			"value": "localhost",
+			"type": "string"
 		}
 	],
 	"protocolProfileBehavior": {}

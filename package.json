@@ -22,6 +22,7 @@
     "test-cucumber": "./node_modules/.bin/cucumber-js",
     "test-jest": "jest",
     "test-API": "newman run API/test/CodeWars.Mumbling.postman_collection.json",
+    "test_API-docker": "docker run -v $PWD/API/test:/etc/newman -t postman/newman run CodeWars.Mumbling.postman_collection.json",
     "test-local": "npm run docker_stop || npm test && npm run docker_build && npm run docker_run && npm run test-API && npm run test-cucumber",
     "test:debug": "jest --watchAll",
     "coverage": "npm test -- --coverage",
